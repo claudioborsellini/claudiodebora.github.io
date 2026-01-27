@@ -166,10 +166,6 @@ footer {
   font-size: 0.9rem;
 }
 
-
-
-
-  
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
   header {
@@ -180,30 +176,40 @@ footer {
     align-items: center;
     background-size: cover;
     background-position: center top;
-    min-height: 60vh;
+    min-height: 53vh;
   }
 
   header h1 {
     font-size: 1.8rem;
     letter-spacing: 1px;
-    margin-top: 40px;
+    margin-top: 21px;
     text-align: center;
   }
 
   header p {
     font-size: 1rem;
-    margin-top: 40px;
+    margin-top: 21px;
     text-align: center;
   }
 
+  /* Countdown mobile più piccolo */
   #countdown {
     margin-top: auto;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
+  }
+
+  .time-box {
+    padding: 10px 8px;
+    min-width: 50px;
   }
 
   .time-box span {
     font-size: 1.2rem;
+  }
+
+  .time-box small {
+    font-size: 0.6rem;
   }
 
   .tab-btn {
@@ -356,7 +362,6 @@ homeBtn.addEventListener('click', () => {
 </footer>
 
 </body>
-
 </html>
 
 
