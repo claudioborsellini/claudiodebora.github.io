@@ -168,9 +168,11 @@ footer {
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
   section {
-    background-size: contain;       /* tutta l’immagine visibile */
-    background-position: center top; 
-    min-height: 400px;             /* aumenta lo spazio verticale per vedere i fiori */
+    background-size: contain;        /* tutta l'immagine visibile senza tagli */
+    background-repeat: no-repeat;
+    background-position: center top; /* centra in orizzontale e in alto */
+    min-height: 500px;               /* aumenta l'altezza della sezione per mostrare i fiori laterali */
+    padding: 40px 20px;              /* mantiene un po' di spazio interno */
   }
 }
 
@@ -357,6 +359,7 @@ tabButtons.forEach(btn => {
 
 </body>
 </html>
+
 
 
 
