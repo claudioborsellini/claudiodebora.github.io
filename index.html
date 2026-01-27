@@ -130,17 +130,23 @@ section {
 
 .tab-btn {
   flex: 1 1 45%;
-  font-size: 0.9rem;
-  padding: 10px 15px;
-  font-family: 'Playfair Display', serif; /* font come desktop */
-  color: #5A493A; /* colore come desktop */
+  font-size: 1rem; /* desktop */
+  padding: 12px 20px;
+  font-family: 'Playfair Display', serif;
   font-weight: bold;
+  color: #5A493A;
+  background: #E8DCC7;
+  border-radius: 26px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.25s, color 0.25s;
 }
 
 .tab-btn.active,
 .tab-btn:hover {
-  background: #BD893E; /* sfondo attivo come desktop */
-  color: white; /* testo bianco quando attivo */
+  background: #BD893E;
+  color: white;
 }
 
 .tab-content {
@@ -149,9 +155,6 @@ section {
 
 .tab-content.active {
   display: block;
-}
-
-.home-btn {
 }
 
 /* ===== FOOTER ===== */
@@ -164,6 +167,7 @@ footer {
 
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
+
   header {
     padding: 15px 10px;
     display: flex;
@@ -188,7 +192,7 @@ footer {
     text-align: center;
   }
 
-  /* Countdown mobile più piccolo */
+  /* Countdown mobile */
   #countdown {
     margin-top: auto;
     gap: 6px;
@@ -196,9 +200,8 @@ footer {
   }
   
   .time-box {
-  background: rgba(255,255,255,0.10); /* più opaco */
-  padding: 10px 8px; /* meno spazio dentro */
-  min-width: 50px; /* box più stretti */
+    padding: 10px 8px;
+    min-width: 50px;
   }
 
   .time-box span {
@@ -209,24 +212,11 @@ footer {
     font-size: 0.6rem;
   }
 
-.tab-btn {
-  flex: 1 1 45%;
-  font-size: 0.9rem;
-  padding: 10px 15px;
-  font-family: 'Playfair Display', serif; 
-  color: #5A493A; 
-  font-weight: bold;
-  background: #E8DCC7; /* <-- aggiungi qui lo sfondo */
-  border-radius: 26px; /* mantiene l’arrotondamento */
-  border: none; 
-  cursor: pointer;
-}
-
-.tab-btn.active,
-.tab-btn:hover {
-  background: #BD893E; /* sfondo attivo come desktop */
-  color: white; /* testo bianco quando attivo */
-}
+  .tab-btn {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    flex: 1 1 45%;
+  }
 }
 </style>
 </head>
@@ -246,13 +236,12 @@ footer {
 
 <section class="main-section">
 
-  <!-- TAB NAV PRINCIPALE + HOME BUTTON -->
+  <!-- TAB NAV PRINCIPALE -->
   <div class="tabs-container">
     <button class="tab-btn" data-tab="tab1">Programma</button>
     <button class="tab-btn" data-tab="tab2">Menu</button>
     <button class="tab-btn" data-tab="tab3">RSVP</button>
     <button class="tab-btn" data-tab="tab4">Regali</button>
-    <button id="homeBtn" class="tab-btn home-btn" style="display:none;">Home</button>
   </div>
 
   <!-- Box introduttivi -->
@@ -338,16 +327,13 @@ setInterval(() => {
   ids.forEach((id,i)=>document.getElementById(id).innerHTML = values[i]);
 },1000);
 
-// Tabs JS + gestione home button
+// Tabs JS
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 const introBoxes = document.querySelector('.intro-boxes');
-const homeBtn = document.getElementById('homeBtn');
 
 tabButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    if(btn.id === "homeBtn") return;
-
     tabButtons.forEach(b => b.classList.remove('active'));
     tabContents.forEach(c => c.classList.remove('active'));
 
@@ -355,15 +341,7 @@ tabButtons.forEach(btn => {
     document.getElementById(btn.dataset.tab).classList.add('active');
 
     introBoxes.style.display = 'none';
-    homeBtn.style.display = 'inline-block';
   });
-});
-
-homeBtn.addEventListener('click', () => {
-  tabContents.forEach(c => c.classList.remove('active'));
-  introBoxes.style.display = 'block';
-  homeBtn.style.display = 'none';
-  tabButtons.forEach(b => b.classList.remove('active'));
 });
 </script>
 
@@ -373,13 +351,6 @@ homeBtn.addEventListener('click', () => {
 
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 
