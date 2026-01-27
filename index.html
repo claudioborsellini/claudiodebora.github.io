@@ -163,88 +163,6 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ===== MOBILE RESPONSIVE TABS (già presente) ===== */
-@media (max-width: 600px) {
-  .tab-btn {
-    flex: 1 1 45%; /* due bottoni per riga */
-    font-size: 0.9rem;
-    padding: 10px 15px;
-  }
-}
-
-/* ===== MOBILE ADAPTIVE COMPLETO ===== */
-@media (max-width: 600px) {
-
-  /* Header scaling */
-  header {
-    padding: 30px 15px;
-  }
-
-  header h1 {
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-  }
-
-  header p {
-    font-size: 1rem;
-    margin-top: 8px;
-  }
-
-  /* Countdown scaling */
-  #countdown {
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 220px;
-  }
-
-  .time-box {
-    min-width: 55px;
-    padding: 10px 8px;
-  }
-
-  .time-box span {
-    font-size: 1.4rem;
-  }
-
-  .time-box small {
-    font-size: 0.65rem;
-  }
-
-  /* Sections / box scaling */
-  section {
-    padding: 60px 15px;
-  }
-
-  .box {
-    padding: 30px 20px;
-  }
-
-  .box h2 {
-    font-size: 1.6rem;
-  }
-
-  .box p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  /* Tabs scaling */
-  .tabs-container {
-    gap: 10px;
-  }
-
-  .tab-btn {
-    font-size: 0.95rem;
-    padding: 10px 15px;
-  }
-
-  /* Footer scaling */
-  footer {
-    font-size: 0.8rem;
-    padding: 20px 10px;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -310,6 +228,9 @@ footer {
     </div>
   </div>
 
+
+
+
   <div class="tab-content" id="tab3">
     <div class="box">
       <h2>Conferma di partecipazione</h2>
@@ -321,16 +242,17 @@ footer {
     </div>
   </div>
 
+
   <div class="tab-content" id="tab4">
     <div class="box">
       <h2>Regali</h2>
-      <p>
-        Il regalo più grande per noi sarà avere la vostra presenza nel nostro giorno speciale 💛
-      </p>
-      <p style="margin-top:15px;">
-        💌 La vostra presenza è il dono più prezioso<br>
-        ✈️ Chi volesse, potrà contribuire al nostro viaggio di nozze<br>
-      </p>
+    <p>
+      Il regalo più grande per noi sarà avere la vostra presenza nel nostro giorno speciale 💛
+    </p>
+    <p style="margin-top:15px;">
+      💌 La vostra presenza è il dono più prezioso<br>
+      ✈️ Chi volesse, potrà contribuire al nostro viaggio di nozze<br>
+    </p>
       <p><strong>IT12 X123 4567 8901 2345 6789 012</strong></p>
       <p>Grazie di cuore per il vostro pensiero 💛</p>
     </div>
@@ -338,8 +260,51 @@ footer {
 
 </section>
 
+<style>
+/* TABS + HOME BUTTON */
+.tabs-container {
+  max-width: 760px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  background: #E8DCC7;
+  border: none;
+  border-radius: 26px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #5A493A;
+  transition: background 0.25s, color 0.25s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: #BD893E;
+  color: white;
+}
+
+.home-btn {
+  font-weight: bold;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 600px) {
+  .tab-btn {
+    flex: 1 1 45%; /* due bottoni per riga */
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
+</style>
+
 <script>
-// Countdown
+// Countdown (sempre attivo)
 const weddingDate = new Date("April 30, 2026 00:00:00").getTime();
 const ids = ["days","hours","minutes","seconds"];
 setInterval(() => {
@@ -396,6 +361,37 @@ homeBtn.addEventListener('click', () => {
 <footer>
   Claudio & Debora · 30/04/2026 💖
 </footer>
+
+<script>
+// Countdown
+const weddingDate = new Date("April 30, 2026 00:00:00").getTime();
+const ids = ["days","hours","minutes","seconds"];
+setInterval(() => {
+  const now = new Date().getTime();
+  let distance = weddingDate - now;
+  if (distance < 0) distance = 0;
+  const values = [
+    Math.floor(distance / (1000*60*60*24)),
+    Math.floor((distance / (1000*60*60)) % 24),
+    Math.floor((distance / (1000*60)) % 60),
+    Math.floor((distance / 1000) % 60)
+  ];
+  ids.forEach((id,i)=>document.getElementById(id).innerHTML = values[i]);
+},1000);
+
+// Tabs JS
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabButtons.forEach(b => b.classList.remove('active'));
+    tabContents.forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+</script>
 
 </body>
 </html>
