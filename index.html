@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Georgia&display=swap" rel="stylesheet">
 
 <style>
-
 /* ===== BODY ===== */
 body {
   margin: 0;
@@ -170,28 +169,33 @@ footer {
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
   header {
-    padding: 20px 10px;
+    padding: 15px 10px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* titolo in alto */
+    justify-content: flex-start;
     align-items: center;
+    background-size: cover;
+    background-position: center top;
+    min-height: 60vh;
   }
 
   header h1 {
-    font-size: 1.8rem; /* titolo più piccolo */
+    font-size: 1.8rem;
     letter-spacing: 1px;
     margin-top: 5px;
+    text-align: center;
   }
 
   header p {
-    font-size: 1rem; /* sottotitolo subito sotto */
+    font-size: 1rem;
     margin-top: 5px;
     text-align: center;
   }
 
   #countdown {
-    margin-top: 15px; /* countdown più in basso */
-    gap: 6px;
+    margin-top: auto;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
   .time-box span {
@@ -199,7 +203,7 @@ footer {
   }
 
   .tab-btn {
-    flex: 1 1 45%; /* due bottoni per riga */
+    flex: 1 1 45%;
     font-size: 0.9rem;
     padding: 10px 15px;
   }
@@ -346,41 +350,6 @@ homeBtn.addEventListener('click', () => {
 <footer>
   Claudio & Debora · 30/04/2026 💖
 </footer>
-/* ===== MOBILE HEADER ===== */
-@media (max-width: 600px) {
-  header {
-    padding: 15px 10px; /* meno padding per adattarsi */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* titolo in alto */
-    align-items: center;
-    background-size: cover; /* mantiene la foto grande */
-    background-position: center top; /* mostra la parte alta della foto */
-    min-height: 60vh; /* mantiene un’altezza decente della header */
-  }
 
-  header h1 {
-    font-size: 1.8rem; /* titolo più piccolo */
-    letter-spacing: 1px;
-    margin-top: 5px;
-    text-align: center;
-  }
-
-  header p {
-    font-size: 1rem; /* sottotitolo subito sotto */
-    margin-top: 5px;
-    text-align: center;
-  }
-
-  #countdown {
-    margin-top: auto; /* countdown verso il basso della header */
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .time-box span {
-    font-size: 1.2rem;
-  }
-}
 </body>
 </html>
