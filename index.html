@@ -20,6 +20,7 @@ body {
 
 /* ===== HEADER ===== */
 header {
+  position: relative; /* necessario per posizionare countdown assoluto */
   background:
     linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)),
     url("sfondoCD.png");
@@ -138,6 +139,7 @@ section {
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
   color: #5A493A;
+  font-weight: bold; /* tutte le tab in grassetto */
   transition: background 0.25s, color 0.25s;
 }
 
@@ -183,23 +185,27 @@ footer {
   }
 
   #countdown {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 220px;
+    flex-direction: row; /* rimane orizzontale */
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    bottom: 20px; /* in basso sull'header */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
   }
 
   .time-box {
-    min-width: 100px;
-    padding: 12px 10px;
-    font-size: 0.95rem;
+    min-width: 60px;
+    padding: 8px 6px;
   }
 
   .time-box span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .time-box small {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
 
   .box {
@@ -225,7 +231,6 @@ footer {
   .tab-btn {
     flex: 1 1 45%;
     font-size: 0.85rem;
-    padding: 8px 12px;
   }
 
   section {
@@ -240,7 +245,7 @@ footer {
 
 @media (max-width: 400px) {
   #countdown {
-    margin-top: 180px;
+    margin-top: 0;
   }
 
   .tab-btn {
@@ -381,32 +386,23 @@ const homeBtn = document.getElementById('homeBtn');
 
 tabButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    if(btn.id === "homeBtn") return; // home gestito separatamente
+    if(btn.id === "homeBtn") return;
 
-    // Rimuovi active da tutti i tab
     tabButtons.forEach(b => b.classList.remove('active'));
     tabContents.forEach(c => c.classList.remove('active'));
 
-    // Aggiungi active al tab selezionato
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
 
-    // Nascondi intro-boxes
     introBoxes.style.display = 'none';
-    // Mostra home button
     homeBtn.style.display = 'inline-block';
   });
 });
 
-// Pulsante Home
 homeBtn.addEventListener('click', () => {
-  // Nascondi tutti i contenuti tab
   tabContents.forEach(c => c.classList.remove('active'));
-  // Mostra intro-boxes
   introBoxes.style.display = 'block';
-  // Nascondi home button
   homeBtn.style.display = 'none';
-  // Rimuovi active dai tab
   tabButtons.forEach(b => b.classList.remove('active'));
 });
 </script>
