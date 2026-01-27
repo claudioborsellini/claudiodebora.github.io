@@ -168,8 +168,9 @@ footer {
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
   section {
-    background-size: auto 100%;   /* l’altezza riempie la sezione, la larghezza si adatta proporzionalmente */
-    background-position: center top; /* centra l’immagine orizzontalmente, top verticalmente */
+    background-size: contain;       /* tutta l’immagine visibile */
+    background-position: center top; 
+    min-height: 400px;             /* aumenta lo spazio verticale per vedere i fiori */
   }
 }
 
@@ -356,6 +357,7 @@ tabButtons.forEach(btn => {
 
 </body>
 </html>
+
 
 
 
