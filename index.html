@@ -117,6 +117,7 @@ section {
 .box p strong {
   color: #BD893E;
 }
+
 /* ===== TAB ===== */
 .tabs-container {
   max-width: 760px;
@@ -128,14 +129,17 @@ section {
 }
 
 .tab-btn {
+  flex: 1 1 45%;
+  font-size: 1rem; /* desktop */
   padding: 12px 20px;
-  background: #E8DCC7;
-  border: none;
-  border-radius: 26px;
-  cursor: pointer;
   font-family: 'Playfair Display', serif;
-  font-size: 1rem;
+  font-weight: bold;
   color: #5A493A;
+  background: #E8DCC7;
+  border-radius: 26px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
   transition: background 0.25s, color 0.25s;
 }
 
@@ -151,10 +155,6 @@ section {
 
 .tab-content.active {
   display: block;
-}
-
-.home-btn {
-  font-weight: bold;
 }
 
 /* ===== FOOTER ===== */
@@ -359,22 +359,3 @@ tabButtons.forEach(btn => {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
