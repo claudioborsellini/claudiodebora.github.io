@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Georgia&display=swap" rel="stylesheet">
 
 <style>
+
 /* ===== BODY ===== */
 body {
   margin: 0;
@@ -51,7 +52,7 @@ header p {
 }
 
 .time-box {
-  background: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.25);
   padding: 16px 14px;
   border-radius: 14px;
   min-width: 75px;
@@ -129,17 +130,14 @@ section {
 }
 
 .tab-btn {
-  flex: 1 1 45%;
-  font-size: 1rem; /* desktop */
   padding: 12px 20px;
-  font-family: 'Playfair Display', serif;
-  font-weight: bold;
-  color: #5A493A;
   background: #E8DCC7;
-  border-radius: 26px;
   border: none;
+  border-radius: 26px;
   cursor: pointer;
-  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #5A493A;
   transition: background 0.25s, color 0.25s;
 }
 
@@ -165,67 +163,88 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ===== MOBILE ===== */
+/* ===== MOBILE RESPONSIVE TABS (già presente) ===== */
 @media (max-width: 600px) {
-  section {
-    background-size: contain;        /* tutta l'immagine visibile senza tagli */
-    background-repeat: no-repeat;
-    background-position: center top; /* centra in orizzontale e in alto */
-    min-height: 500px;               /* aumenta l'altezza della sezione per mostrare i fiori laterali */
-    padding: 40px 20px;              /* mantiene un po' di spazio interno */
+  .tab-btn {
+    flex: 1 1 45%; /* due bottoni per riga */
+    font-size: 0.9rem;
+    padding: 10px 15px;
   }
 }
 
+/* ===== MOBILE ADAPTIVE COMPLETO ===== */
+@media (max-width: 600px) {
+
+  /* Header scaling */
   header {
-    padding: 15px 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-size: cover;
-    background-position: center top;
-    min-height: 53vh;
+    padding: 30px 15px;
   }
 
   header h1 {
-    font-size: 1.8rem;
-    letter-spacing: 1px;
-    margin-top: 25px;
-    text-align: center;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
   }
 
   header p {
     font-size: 1rem;
-    margin-top: 25px;
-    text-align: center;
+    margin-top: 8px;
   }
 
-  /* Countdown mobile */
+  /* Countdown scaling */
   #countdown {
-    margin-top: auto;
-    gap: 6px;
     flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 220px;
   }
-  
+
   .time-box {
+    min-width: 55px;
     padding: 10px 8px;
-    min-width: 50px;
   }
 
   .time-box span {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .time-box small {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
+  }
+
+  /* Sections / box scaling */
+  section {
+    padding: 60px 15px;
+  }
+
+  .box {
+    padding: 30px 20px;
+  }
+
+  .box h2 {
+    font-size: 1.6rem;
+  }
+
+  .box p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Tabs scaling */
+  .tabs-container {
+    gap: 10px;
   }
 
   .tab-btn {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     padding: 10px 15px;
-    flex: 1 1 45%;
+  }
+
+  /* Footer scaling */
+  footer {
+    font-size: 0.8rem;
+    padding: 20px 10px;
   }
 }
+
 </style>
 </head>
 <body>
@@ -244,12 +263,13 @@ footer {
 
 <section class="main-section">
 
-  <!-- TAB NAV PRINCIPALE -->
+  <!-- TAB NAV PRINCIPALE + HOME BUTTON -->
   <div class="tabs-container">
     <button class="tab-btn" data-tab="tab1">Programma</button>
     <button class="tab-btn" data-tab="tab2">Menu</button>
     <button class="tab-btn" data-tab="tab3">RSVP</button>
     <button class="tab-btn" data-tab="tab4">Regali</button>
+    <button id="homeBtn" class="tab-btn home-btn" style="display:none;">Home</button>
   </div>
 
   <!-- Box introduttivi -->
@@ -335,21 +355,41 @@ setInterval(() => {
   ids.forEach((id,i)=>document.getElementById(id).innerHTML = values[i]);
 },1000);
 
-// Tabs JS
+// Tabs JS + gestione home button
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 const introBoxes = document.querySelector('.intro-boxes');
+const homeBtn = document.getElementById('homeBtn');
 
 tabButtons.forEach(btn => {
   btn.addEventListener('click', () => {
+    if(btn.id === "homeBtn") return; // home gestito separatamente
+
+    // Rimuovi active da tutti i tab
     tabButtons.forEach(b => b.classList.remove('active'));
     tabContents.forEach(c => c.classList.remove('active'));
 
+    // Aggiungi active al tab selezionato
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
 
+    // Nascondi intro-boxes
     introBoxes.style.display = 'none';
+    // Mostra home button
+    homeBtn.style.display = 'inline-block';
   });
+});
+
+// Pulsante Home
+homeBtn.addEventListener('click', () => {
+  // Nascondi tutti i contenuti tab
+  tabContents.forEach(c => c.classList.remove('active'));
+  // Mostra intro-boxes
+  introBoxes.style.display = 'block';
+  // Nascondi home button
+  homeBtn.style.display = 'none';
+  // Rimuovi active dai tab
+  tabButtons.forEach(b => b.classList.remove('active'));
 });
 </script>
 
