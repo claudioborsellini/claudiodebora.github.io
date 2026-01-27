@@ -171,8 +171,10 @@ footer {
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
+  /* Header più alto su mobile */
   header {
-    padding: 30px 15px;
+    padding: 80px 15px; /* più spazio sopra e sotto il testo */
+    min-height: 350px;  /* altezza minima più grande per la foto */
   }
 
   header h1 {
@@ -184,12 +186,13 @@ footer {
     font-size: 1.2rem;
   }
 
+  /* Countdown in orizzontale e centrato in basso */
   #countdown {
-    flex-direction: row; /* rimane orizzontale */
+    flex-direction: row;
     justify-content: center;
     gap: 8px;
     position: absolute;
-    bottom: 20px; /* in basso sull'header */
+    bottom: 20px; 
     left: 50%;
     transform: translateX(-50%);
     margin-top: 0;
@@ -208,6 +211,7 @@ footer {
     font-size: 0.6rem;
   }
 
+  /* Box contenuti più piccoli */
   .box {
     padding: 25px 20px;
     border-radius: 20px;
@@ -222,6 +226,7 @@ footer {
     font-size: 1rem;
   }
 
+  /* Tabs più compatte */
   .tabs-container {
     gap: 8px;
     flex-wrap: wrap;
@@ -243,6 +248,7 @@ footer {
   }
 }
 
+/* Smartphone molto piccoli */
 @media (max-width: 400px) {
   #countdown {
     margin-top: 0;
@@ -409,3 +415,4 @@ homeBtn.addEventListener('click', () => {
 
 </body>
 </html>
+
