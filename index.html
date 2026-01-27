@@ -129,21 +129,17 @@ section {
 }
 
 .tab-btn {
-  padding: 12px 20px;
-  background: #E8DCC7;
-  border: none;
-  border-radius: 26px;
-  cursor: pointer;
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  color: #5A493A;
-  transition: background 0.25s, color 0.25s;
+  flex: 1 1 45%;
+  font-size: 0.9rem;
+  padding: 10px 15px;
+  font-family: 'Playfair Display', serif; /* font come desktop */
+  color: #5A493A; /* colore come desktop */
 }
 
 .tab-btn.active,
 .tab-btn:hover {
-  background: #BD893E;
-  color: white;
+  background: #BD893E; /* sfondo attivo come desktop */
+  color: white; /* testo bianco quando attivo */
 }
 
 .tab-content {
@@ -213,19 +209,19 @@ footer {
     font-size: 0.6rem;
   }
 
-  .tab-btn {
-    flex: 1 1 45%;
-    font-size: 0.9rem;
-    padding: 10px 15px;
-    font-family: 'Playfair Display', serif; /* stesso font del desktop */
-    color: #5A493A; /* colore testo */
-  }
+.tab-btn {
+  flex: 1 1 45%;
+  font-size: 0.9rem;
+  padding: 10px 15px;
+  font-family: 'Playfair Display', serif; /* font come desktop */
+  color: #5A493A; /* colore come desktop */
+}
 
-  .tab-btn.active,
-  .tab-btn:hover {
-    background: #BD893E;
-    color: white; /* mantiene il bianco quando attivo */
-  }
+.tab-btn.active,
+.tab-btn:hover {
+  background: #BD893E; /* sfondo attivo come desktop */
+  color: white; /* testo bianco quando attivo */
+}
 }
 </style>
 </head>
@@ -372,6 +368,7 @@ homeBtn.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
