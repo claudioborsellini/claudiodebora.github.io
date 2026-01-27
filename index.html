@@ -147,6 +147,10 @@ section {
   color: white;
 }
 
+.home-btn {
+  font-weight: bold;
+}
+
 .tab-content {
   display: none;
 }
@@ -163,6 +167,98 @@ footer {
   font-size: 0.9rem;
 }
 
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  header {
+    padding: 30px 15px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+
+  header p {
+    font-size: 1.2rem;
+  }
+
+  #countdown {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 220px;
+  }
+
+  .time-box {
+    min-width: 100px;
+    padding: 12px 10px;
+    font-size: 0.95rem;
+  }
+
+  .time-box span {
+    font-size: 1.5rem;
+  }
+
+  .time-box small {
+    font-size: 0.65rem;
+  }
+
+  .box {
+    padding: 25px 20px;
+    border-radius: 20px;
+    max-width: 90%;
+  }
+
+  .box h2 {
+    font-size: 1.6rem;
+  }
+
+  .box p {
+    font-size: 1rem;
+  }
+
+  .tabs-container {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tab-btn {
+    flex: 1 1 45%;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  section {
+    padding: 50px 15px;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  #countdown {
+    margin-top: 180px;
+  }
+
+  .tab-btn {
+    flex: 1 1 100%;
+  }
+
+  .box {
+    padding: 20px 15px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -228,9 +324,6 @@ footer {
     </div>
   </div>
 
-
-
-
   <div class="tab-content" id="tab3">
     <div class="box">
       <h2>Conferma di partecipazione</h2>
@@ -242,17 +335,16 @@ footer {
     </div>
   </div>
 
-
   <div class="tab-content" id="tab4">
     <div class="box">
       <h2>Regali</h2>
-    <p>
-      Il regalo più grande per noi sarà avere la vostra presenza nel nostro giorno speciale 💛
-    </p>
-    <p style="margin-top:15px;">
-      💌 La vostra presenza è il dono più prezioso<br>
-      ✈️ Chi volesse, potrà contribuire al nostro viaggio di nozze<br>
-    </p>
+      <p>
+        Il regalo più grande per noi sarà avere la vostra presenza nel nostro giorno speciale 💛
+      </p>
+      <p style="margin-top:15px;">
+        💌 La vostra presenza è il dono più prezioso<br>
+        ✈️ Chi volesse, potrà contribuire al nostro viaggio di nozze<br>
+      </p>
       <p><strong>IT12 X123 4567 8901 2345 6789 012</strong></p>
       <p>Grazie di cuore per il vostro pensiero 💛</p>
     </div>
@@ -260,51 +352,12 @@ footer {
 
 </section>
 
-<style>
-/* TABS + HOME BUTTON */
-.tabs-container {
-  max-width: 760px;
-  margin: 0 auto 40px auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.tab-btn {
-  padding: 12px 20px;
-  background: #E8DCC7;
-  border: none;
-  border-radius: 26px;
-  cursor: pointer;
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  color: #5A493A;
-  transition: background 0.25s, color 0.25s;
-}
-
-.tab-btn.active,
-.tab-btn:hover {
-  background: #BD893E;
-  color: white;
-}
-
-.home-btn {
-  font-weight: bold;
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 600px) {
-  .tab-btn {
-    flex: 1 1 45%; /* due bottoni per riga */
-    font-size: 0.9rem;
-    padding: 10px 15px;
-  }
-}
-</style>
+<footer>
+  Claudio & Debora · 30/04/2026 💖
+</footer>
 
 <script>
-// Countdown (sempre attivo)
+// Countdown
 const weddingDate = new Date("April 30, 2026 00:00:00").getTime();
 const ids = ["days","hours","minutes","seconds"];
 setInterval(() => {
@@ -355,41 +408,6 @@ homeBtn.addEventListener('click', () => {
   homeBtn.style.display = 'none';
   // Rimuovi active dai tab
   tabButtons.forEach(b => b.classList.remove('active'));
-});
-</script>
-
-<footer>
-  Claudio & Debora · 30/04/2026 💖
-</footer>
-
-<script>
-// Countdown
-const weddingDate = new Date("April 30, 2026 00:00:00").getTime();
-const ids = ["days","hours","minutes","seconds"];
-setInterval(() => {
-  const now = new Date().getTime();
-  let distance = weddingDate - now;
-  if (distance < 0) distance = 0;
-  const values = [
-    Math.floor(distance / (1000*60*60*24)),
-    Math.floor((distance / (1000*60*60)) % 24),
-    Math.floor((distance / (1000*60)) % 60),
-    Math.floor((distance / 1000) % 60)
-  ];
-  ids.forEach((id,i)=>document.getElementById(id).innerHTML = values[i]);
-},1000);
-
-// Tabs JS
-const tabButtons = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
-
-tabButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    tabButtons.forEach(b => b.classList.remove('active'));
-    tabContents.forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
-  });
 });
 </script>
 
