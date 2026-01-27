@@ -168,8 +168,8 @@ footer {
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
   section {
-    background-size: cover;        /* mantiene l'immagine piena su tutta la larghezza */
-    background-position: top center; /* allinea la parte più importante (fiori) in alto */
+    background-size: auto 100%;   /* l’altezza riempie la sezione, la larghezza si adatta proporzionalmente */
+    background-position: center top; /* centra l’immagine orizzontalmente, top verticalmente */
   }
 }
 
@@ -356,6 +356,7 @@ tabButtons.forEach(btn => {
 
 </body>
 </html>
+
 
 
 
