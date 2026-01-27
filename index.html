@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claudio & Debora</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Georgia&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background-color: #D3C7B1;
+  color: #333;
+}
+
+/* ===== HEADER ===== */
+header {
+  background:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)),
+    url("sfondoCD.png");
+  background-size: cover;
+  background-position: center;
+  padding: 50px 20px;
+  text-align: center;
+  color: #BD893E;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+header p {
+  font-size: 1.5rem;
+  margin-top: 12px;
+}
+
+/* ===== COUNTDOWN ===== */
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 380px;
+  font-family: 'Playfair Display', serif;
+}
+
+.time-box {
+  background: rgba(255,255,255,0.25);
+  padding: 16px 14px;
+  border-radius: 14px;
+  min-width: 75px;
+  text-align: center;
+  color: #BD893E;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.time-box span {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.time-box small {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== SEZIONI CON FLOREALE ===== */
+section {
+  padding: 80px 20px;
+  background:
+    linear-gradient(rgba(239,232,221,0.60), rgba(239,232,221,0.60)),
+    url("floreale.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===== BOX ===== */
+.box {
+  max-width: 760px;
+  margin: 0 auto 40px auto;
+  background: linear-gradient(145deg, #F2E7D6, #D6C7B3);
+  padding: 40px 35px;
+  border-radius: 26px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #BD893E;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.box p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #4E4638;
+  margin: 10px 0;
+}
+
+.box p strong {
+  color: #BD893E;
+}
+
+/* ===== TAB ===== */
+.tabs-container {
+  max-width: 760px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  background: #E8DCC7;
+  border: none;
+  border-radius: 26px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #5A493A;
+  transition: background 0.25s, color 0.25s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: #BD893E;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #e6dfd4;
+  font-size: 0.9rem;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Claudio & Debora</h1>
+  <p>Il nostro giorno speciale · 30 Aprile 2026</p>
+
+  <div id="countdown">
+    <div class="time-box"><span id="days">0</span><small>Giorni</small></div>
+    <div class="time-box"><span id="hours">0</span><small>Ore</small></div>
+    <div class="time-box"><span id="minutes">0</span><small>Minuti</small></div>
+    <div class="time-box"><span id="seconds">0</span><small>Secondi</small></div>
+  </div>
+</header>
+
+<section class="main-section">
+
+  <!-- TAB NAV PRINCIPALE + HOME BUTTON -->
+  <div class="tabs-container">
+    <button class="tab-btn" data-tab="tab1">Programma</button>
+    <button class="tab-btn" data-tab="tab2">Menu</button>
+    <button class="tab-btn" data-tab="tab3">RSVP</button>
+    <button class="tab-btn" data-tab="tab4">Regali</button>
+    <button id="homeBtn" class="tab-btn home-btn" style="display:none;">Home</button>
+  </div>
+
+  <!-- Box introduttivi -->
+  <div class="intro-boxes">
+    <div class="box">
+      <h2>La nostra storia</h2>
+      <p>
+        Dopo 18 anni di vita insieme, avventure e momenti condivisi,
+        abbiamo deciso di dirci <strong>SÌ</strong>
+        e non vediamo l’ora di festeggiare con voi 💕
+      </p>
+    </div>
+
+    <div class="box">
+      <h2>Il matrimonio</h2>
+      <p><strong>Cerimonia</strong><br>da definire</p>
+      <p><strong>Ricevimento</strong><br>da definire</p>
+    </div>
+  </div>
+
+  <!-- CONTENUTO DEI TAB -->
+  <div class="tab-content" id="tab1">
+    <div class="box">
+      <h2>Programma</h2>
+      <p>📍 Cerimonia</p>
+      <p>🥂 Aperitivo</p>
+      <p>🍽️ Cena</p>
+      <p>🎉 Festa</p>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab2">
+    <div class="box">
+      <h2>Menu</h2>
+      <p>🍖 Carne</p>
+      <p>🐟 Pesce</p>
+      <p>🌱 Vegetariano / Intolleranze</p>
+    </div>
+  </div>
+
+
+
+
+  <div class="tab-content" id="tab3">
+    <div class="box">
+      <h2>Conferma di partecipazione</h2>
+      <p>
+        Per aiutarci a organizzare al meglio il nostro giorno speciale,
+        ti chiediamo gentilmente di confermare la tua presenza
+        <strong>entro il 1 Marzo 2026</strong>.
+      </p>
+    </div>
+  </div>
+
+
+  <div class="tab-content" id="tab4">
+    <div class="box">
+      <h2>Regali</h2>
+    <p>
+      Il regalo più grande per noi sarà avere la vostra presenza nel nostro giorno speciale 💛
+    </p>
+    <p style="margin-top:15px;">
+      💌 La vostra presenza è il dono più prezioso<br>
+      ✈️ Chi volesse, potrà contribuire al nostro viaggio di nozze<br>
+    </p>
+      <p><strong>IT12 X123 4567 8901 2345 6789 012</strong></p>
+      <p>Grazie di cuore per il vostro pensiero 💛</p>
+    </div>
+  </div>
+
+</section>
+
+<style>
+/* TABS + HOME BUTTON */
+.tabs-container {
+  max-width: 760px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  background: #E8DCC7;
+  border: none;
+  border-radius: 26px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #5A493A;
+  transition: background 0.25s, color 0.25s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: #BD893E;
+  color: white;
+}
+
+.home-btn {
+  font-weight: bold;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 600px) {
+  .tab-btn {
+    flex: 1 1 45%; /* due bottoni per riga */
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
+</style>
+
+<script>
+// Countdown (sempre attivo)
+const weddingDate = new Date("April 30, 2026 00:00:00").getTime();
+const ids = ["days","hours","minutes","seconds"];
+setInterval(() => {
+  const now = new Date().getTime();
+  let distance = weddingDate - now;
+  if (distance < 0) distance = 0;
+  const values = [
+    Math.floor(distance / (1000*60*60*24)),
+    Math.floor((distance / (1000*60*60)) % 24),
+    Math.floor((distance / (1000*60)) % 60),
+    Math.floor((distance / 1000) % 60)
+  ];
+  ids.forEach((id,i)=>document.getElementById(id).innerHTML = values[i]);
+},1000);
+
+// Tabs JS + gestione home button
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+const introBoxes = document.querySelector('.intro-boxes');
+const homeBtn = document.getElementById('homeBtn');
+
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    if(btn.id === "homeBtn") return; // home gestito separatamente
+
+    // Rimuovi active da tutti i tab
+    tabButtons.forEach(b => b.classList.remove('active'));
+    tabContents.forEach(c => c.classList.remove('active'));
+
+    // Aggiungi active al tab selezionato
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+
+    // Nascondi intro-boxes
+    introBoxes.style.display = 'none';
+    // Mostra home button
+    homeBtn.style.display = 'inline-block';
+  });
+});
+
+// Pulsante Home
+homeBtn.addEventListener('click', () => {
+  // Nascondi tutti i contenuti tab
+  tabContents.forEach(c => c.classList.remove('active'));
+  // Mostra intro-boxes
+  introBoxes.style.display = 'block';
+  // Nascondi home button
+  homeBtn.style.display = 'none';
+  // Rimuovi active dai tab
+  tabButtons.forEach(b => b.classList.remove('active'));
+});
+</script>
+
+<footer>
+  Claudio & Debora · 30/04/2026 💖
+</footer>
+
+<script>
+// Countdown
+const weddingDate = new Date("April 30, 2026 00:00:00").getTime();
+const ids = ["days","hours","minutes","seconds"];
+setInterval(() => {
+  const now = new Date().getTime();
+  let distance = weddingDate - now;
+  if (distance < 0) distance = 0;
+  const values = [
+    Math.floor(distance / (1000*60*60*24)),
+    Math.floor((distance / (1000*60*60)) % 24),
+    Math.floor((distance / (1000*60)) % 60),
+    Math.floor((distance / 1000) % 60)
+  ];
+  ids.forEach((id,i)=>document.getElementById(id).innerHTML = values[i]);
+},1000);
+
+// Tabs JS
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabButtons.forEach(b => b.classList.remove('active'));
+    tabContents.forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
