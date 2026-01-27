@@ -346,6 +346,41 @@ homeBtn.addEventListener('click', () => {
 <footer>
   Claudio & Debora · 30/04/2026 💖
 </footer>
+/* ===== MOBILE HEADER ===== */
+@media (max-width: 600px) {
+  header {
+    padding: 15px 10px; /* meno padding per adattarsi */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* titolo in alto */
+    align-items: center;
+    background-size: cover; /* mantiene la foto grande */
+    background-position: center top; /* mostra la parte alta della foto */
+    min-height: 60vh; /* mantiene un’altezza decente della header */
+  }
 
+  header h1 {
+    font-size: 1.8rem; /* titolo più piccolo */
+    letter-spacing: 1px;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  header p {
+    font-size: 1rem; /* sottotitolo subito sotto */
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  #countdown {
+    margin-top: auto; /* countdown verso il basso della header */
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .time-box span {
+    font-size: 1.2rem;
+  }
+}
 </body>
 </html>
