@@ -139,7 +139,7 @@ section {
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
   color: #5A493A;
-  font-weight: bold; /* tutte le tab in grassetto */
+  font-weight: bold;
   transition: background 0.25s, color 0.25s;
 }
 
@@ -173,8 +173,8 @@ footer {
 @media (max-width: 768px) {
   /* Header più alto su mobile */
   header {
-    padding: 80px 15px; /* più spazio sopra e sotto il testo */
-    min-height: 350px;  /* altezza minima più grande per la foto */
+    padding: 80px 15px;
+    min-height: 350px;
   }
 
   header h1 {
@@ -186,21 +186,21 @@ footer {
     font-size: 1.2rem;
   }
 
-  /* Solo la sezione principale floreale su mobile */
+  /* Sezione floreale principale solo su mobile */
   section.main-section {
     background-size: contain;
     background-position: center top;
     background-repeat: repeat-y;
+    padding: 50px 15px;
   }
-}
 
-  /* Countdown in orizzontale e centrato in basso */
+  /* Countdown in basso */
   #countdown {
     flex-direction: row;
     justify-content: center;
     gap: 8px;
     position: absolute;
-    bottom: 20px; 
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 0;
@@ -244,10 +244,6 @@ footer {
   .tab-btn {
     flex: 1 1 45%;
     font-size: 0.85rem;
-  }
-
-  section {
-    padding: 50px 15px;
   }
 
   footer {
@@ -423,7 +419,3 @@ homeBtn.addEventListener('click', () => {
 
 </body>
 </html>
-
-
-
-
